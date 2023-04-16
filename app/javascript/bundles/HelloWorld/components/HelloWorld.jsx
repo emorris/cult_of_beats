@@ -4,17 +4,14 @@ import style from './HelloWorld.module.css';
 
 const HelloWorld = ({ name, updateName }) => (
   <div>
+
+    <h1 className="text-3xl font-bold underline">
+        Hello world!
+    </h1>
     <h3>
       Hello,
       {name}!
     </h3>
-    <hr />
-    <form>
-      <label className={style.bright} htmlFor="name">
-        Say hello to:
-        <input id="name" type="text" value={name} onChange={(e) => updateName(e.target.value)} />
-      </label>
-    </form>
   </div>
 );
 

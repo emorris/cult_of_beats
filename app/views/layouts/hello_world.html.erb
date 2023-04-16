@@ -3,11 +3,17 @@
   <head>
     <title>ReactOnRailsWithShakapacker</title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_pack_tag 'hello-world-bundle' %>
     <%= stylesheet_pack_tag 'hello-world-bundle' %>
   </head>
 
   <body>
+
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+</h1>
     <%= yield %>
   </body>
 </html>
