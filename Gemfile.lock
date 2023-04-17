@@ -117,6 +117,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -276,6 +278,7 @@ DEPENDENCIES
   faker
   image_processing (~> 1.2)
   jbuilder
+  jsonapi-serializer (~> 2.2)
   omniauth
   pg (~> 1.1)
   puma (~> 5.0)

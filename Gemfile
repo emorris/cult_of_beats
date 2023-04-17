@@ -75,3 +75,5 @@ gem "shakapacker", "= 6.6"
 gem "tailwindcss-rails", "~> 2.0"
 
 
+
+gem "jsonapi-serializer", "~> 2.2"
