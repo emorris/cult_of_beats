@@ -1,6 +1,8 @@
-import { createStore } from 'redux';
-import indexReducer from '../reducers/indexReducer';
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../reducers/counterSlice'
 
-const configureStore = (railsProps) => createStore(indexReducer, railsProps);
-
-export default configureStore;
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+})
