@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import style from './HelloWorld.module.css';
-require("daisyui")
 const HelloWorld = ({ name, updateName }) => (
   <div>
     <a class="btn btn-primary">Button</a>
