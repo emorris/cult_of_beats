@@ -1,28 +1,31 @@
 import React from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import {mainLinks, userLinks} from "./NavLinks"
+import {mainLinks} from "./NavLinks"
 import { Link } from "react-router-dom";
+import { useCurrentUserQuery } from '../../reducers/currentUserApi'
+
+import LoginSignUpBtn from './LoginSignUpBtn';
+import UserMenu from './UserMenu'
 
 
 export default function Header() {
   const [userDropDownVisible, setUserDropDown] = useState(false);
-  const currentUser = useSelector((state) => state.currentUser.data)
-  const dispatch = useDispatch()
+  const currentUserQuery = useCurrentUserQuery()
+  let currentUser = null
+  if(currentUserQuery.status == "fulfilled"){
+    currentUser = currentUserQuery.data.data
+  }
   const mainLinksElements = mainLinks.map((link) => {
     return(
-        <li><Link to="..">{link.name}</Link></li>
+      <li key={link.url}><Link to="..">{link.name}</Link></li>
     )
   })
+  console.log(currentUser)
 
-  const userLinkElements = userLinks.map((link) => {
-    return(
-        <li><Link>{link.name}</Link></li>
-    )
-  })
   
   return (
-        <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100">
         <div className="navbar-start">
             <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,23 +43,8 @@ export default function Header() {
             </ul>
         </div>
         <div className="navbar-end">
-            { currentUser == null ?
-                <a className="btn">Login/SignUp</a>
-              :    
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
-                  </div>
-                </label>
-                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                  {userLinkElements}
-                </ul>
-              </div>
-                    
-            }
-                    
-
+          
+          { currentUser == null ? <LoginSignUpBtn /> : <UserMenu user={currentUser} /> }        
         </div>
     </div>
 

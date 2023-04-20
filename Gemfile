@@ -69,11 +69,8 @@ group :test do
 end
 
 gem "react_on_rails", "= 13.3"
-
 gem "shakapacker", "= 6.6"
-
 gem "tailwindcss-rails", "~> 2.0"
-
-
-
 gem "jsonapi-serializer", "~> 2.2"
+gem 'font-awesome-sass'
+
