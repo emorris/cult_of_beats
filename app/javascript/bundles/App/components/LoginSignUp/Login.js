@@ -1,18 +1,17 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { addAlert} from '../../reducers/alertsSlice'
 import { useLoginMutation } from '../../reducers/currentUserApi'
 import {loadingSpinner} from '../../helpers/loading'
 export default function Login() {
   const [params, setParamState] = useState({
-    email: '',
-    password: '',
+    email: null,
+    password: null,
   })
 
   const handleChange = ({target: { name, value }}) =>{
     setParamState((prev) => ({ ...prev, [name]: value }))
   }
-   
 
   const csrfToken = document.querySelector('[name=csrf-token]').content;
   const [loginQuery, { isLoading }] = useLoginMutation()

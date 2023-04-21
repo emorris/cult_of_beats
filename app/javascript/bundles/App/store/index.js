@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../reducers/counterSlice'
+import alertsReducer from '../reducers/alertsSlice'
 import currentUserReducer from '../reducers/currentUser'
 import { userApi } from '../reducers/currentUserApi'
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    alerts: alertsReducer,
     currentUser: currentUserReducer,
     [userApi.reducerPath]: userApi.reducer
   },
