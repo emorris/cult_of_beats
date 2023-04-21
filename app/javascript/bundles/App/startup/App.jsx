@@ -6,6 +6,7 @@ import MainApp from '../components/Layouts/MainApp';
 import Home from '../components/Home/Index';
 import Login from '../components/LoginSignUp/Index'
 import Logout from '../components/LoginSignUp/Logout'
+import Alerts from '../components/Alerts/Index'
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
