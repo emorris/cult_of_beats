@@ -5,7 +5,7 @@ import {getUserIcon} from "../../helpers/user"
 export default function UserMenu({user}) {
   const userLinkElements = userLinks.map((link) => {
     return(
-        <li key={link.url}><Link>{link.name}</Link></li>
+        <li key={link.url}><Link to={link.url}>{link.name}</Link></li>
     )
   })
   return (

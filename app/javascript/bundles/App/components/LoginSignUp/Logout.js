@@ -1,17 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
-
-export default Logout = () => {
+import { useLogoutMutation } from '../../reducers/currentUserApi'
+export default function Logout() {
   // const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  const [
+    noMoreUser, // This is the mutation trigger
+    data, // This is the destructured mutation result
+  ] = useLogoutMutation()
 
-  // useEffect(() => {
-  //   dispatch(logout())
-  //     .then(() => {
-  //       navigate("/", { replace: true });
-  //     });
+  useEffect(()=> {
+    const logoutUser = noMoreUser()
+  },[])
 
-  // }, []);
+  console.log(data, data.isLoading, data.status)
+  if(!data.isUninitialized && !data.isLoading){
+    navigate("/", { replace: true });
+  }
 
-  return <div class="radial-progress" style="--value:70;">70%</div>;
+  return <></>
 };

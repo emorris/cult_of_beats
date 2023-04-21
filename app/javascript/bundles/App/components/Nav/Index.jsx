@@ -12,16 +12,16 @@ import UserMenu from './UserMenu'
 export default function Header() {
   const [userDropDownVisible, setUserDropDown] = useState(false);
   const currentUserQuery = useCurrentUserQuery()
+  console.log(currentUserQuery)
   let currentUser = null
   if(currentUserQuery.status == "fulfilled"){
     currentUser = currentUserQuery.data.data
   }
   const mainLinksElements = mainLinks.map((link) => {
     return(
-      <li key={link.url}><Link to="..">{link.name}</Link></li>
+      <li key={link.url}><Link to={link.url}>{link.name}</Link></li>
     )
   })
-  console.log(currentUser)
 
   
   return (

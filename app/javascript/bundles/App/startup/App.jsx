@@ -4,7 +4,8 @@ import { Route, Routes, BrowserRouter, useLocation } from 'react-router-dom';
 import configureStore from '../store/index.js';
 import MainApp from '../components/Layouts/MainApp';
 import Home from '../components/Home/Index';
-import Login from '../components/LoginSignUp/Index.js'
+import Login from '../components/LoginSignUp/Index'
+import Logout from '../components/LoginSignUp/Logout'
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
@@ -20,6 +21,10 @@ const App = (props) => (
           <Route
             path="/login"
             element={<Login />}
+          />
+          <Route
+            path="/logout"
+            element={<Logout />}
           />
         </Routes>
       </MainApp>
