@@ -10,23 +10,6 @@ export default function SignUp() {
   const [passwordConfirmation, setPasswordConfirmation] = useState();
   const csrfToken = document.querySelector('[name=csrf-token]').content;
   const [signupQuery, { isLoading }] = useSignupMutation()
-  
-
-  // function createUser(){
-  //   fetch("/users", {
-  //     method: "POST",
-  //     headers: {
-  //       'X-CSRF-TOKEN': csrfToken,
-  //       "Content-Type": "application/json",
-  //       'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify({user: { email: email, password: password, password_confirmation: passwordConfirmation }}),
-  //   })
-  //     .then((r) => r.json())
-  //     .then((user) => {console.log(user)})
-  // }
-  
-
 
 
   const signupClick = async () => {
@@ -35,6 +18,7 @@ export default function SignUp() {
       window.location.replace('/');
     }
   }
+  
   return (
       <div className="grid flex-grow card place-items-center">
         <div className="card w-96 bg-neutral text-neutral-content">
