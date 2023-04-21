@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+
 import { useLoginMutation } from '../../reducers/currentUserApi'
 import {loadingSpinner} from '../../helpers/loading'
 export default function Login() {
@@ -8,7 +8,6 @@ export default function Login() {
   const [password, setPassword] = useState();
   const csrfToken = document.querySelector('[name=csrf-token]').content;
   const [loginQuery, { isLoading }] = useLoginMutation()
-  const navigate = useNavigate();
   
   const loginClick = async () => {
     if (password && email) {
@@ -38,7 +37,10 @@ export default function Login() {
                 className="input input-bordered w-full max-w-xs text-black" />
             </div>
             <div className="card-actions justify-end">
-              <button onClick={() => loginClick()} className="btn gap-2">
+              <button 
+                disabled={isLoading}
+                onClick={() => loginClick()} 
+                className="btn gap-2">
                   Sign In {loadingSpinner(isLoading)}
               </button>
             </div>

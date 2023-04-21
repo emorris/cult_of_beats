@@ -1,33 +1,40 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useGetCurrentUserQuery } from '../../reducers/currentUserApi'
+import { useSignupMutation } from '../../reducers/currentUserApi'
+import {loadingSpinner} from '../../helpers/loading'
 
 export default function SignUp() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
   const csrfToken = document.querySelector('[name=csrf-token]').content;
+  const [signupQuery, { isLoading }] = useSignupMutation()
+  
 
-  function createUser(){
-    fetch("/users", {
-      method: "POST",
-      headers: {
-        'X-CSRF-TOKEN': csrfToken,
-        "Content-Type": "application/json",
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({user: { email: email, password: password, password_confirmation: passwordConfirmation }}),
-    })
-      .then((r) => r.json())
-      .then((user) => {console.log(user)})
-  }
-  // const createUser = async () => {
-  //   if (title && content) {
-  //     await updatePost({ id: postId, title, content })
-  //     history.push(`/posts/${postId}`)
-  //   }
+  // function createUser(){
+  //   fetch("/users", {
+  //     method: "POST",
+  //     headers: {
+  //       'X-CSRF-TOKEN': csrfToken,
+  //       "Content-Type": "application/json",
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify({user: { email: email, password: password, password_confirmation: passwordConfirmation }}),
+  //   })
+  //     .then((r) => r.json())
+  //     .then((user) => {console.log(user)})
   // }
   
+
+
+
+  const signupClick = async () => {
+    if (password && email && passwordConfirmation) {
+      await signupQuery({ email, password, password_confirmation: passwordConfirmation })
+      window.location.replace('/');
+    }
+  }
   return (
       <div className="grid flex-grow card place-items-center">
         <div className="card w-96 bg-neutral text-neutral-content">
@@ -59,7 +66,12 @@ export default function SignUp() {
                   className="input input-bordered w-full max-w-xs text-black" />
               </div>
               <div className="card-actions justify-end">
-                <button onClick={() => createUser()} className="btn btn-primary">Create Account</button>
+                <button 
+                  disabled={isLoading}
+                  onClick={() => signupClick()} 
+                  className="btn btn-primary gap-2">
+                    Create Account {loadingSpinner(isLoading)}
+                </button>
               </div>
           </div>
         </div>
