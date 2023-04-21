@@ -8,7 +8,8 @@ export default function Login() {
     email: null,
     password: null,
   })
-
+  const dispatch = useDispatch()
+  dispatch(addAlert({"hello":"world"}))
   const handleChange = ({target: { name, value }}) =>{
     setParamState((prev) => ({ ...prev, [name]: value }))
   }

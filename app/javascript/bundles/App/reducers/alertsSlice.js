@@ -9,7 +9,7 @@ export const alertsSlice = createSlice({
     addAlert: (state, action) => {
       console.log(action)
       // action.id = uuid()
-      state.value.append(action)
+      state.value.push(action.payload)
     },
     removeAlert: (state) => {
       state.value -= 1

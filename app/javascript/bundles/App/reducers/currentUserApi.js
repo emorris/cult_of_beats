@@ -8,7 +8,6 @@ export const userApi = createApi({
       let csrfToken = document.querySelector('[name=csrf-token]').content;
       headers.set('X-CSRF-TOKEN', csrfToken);
       headers.set('Accept', 'application/json');
-      console.log(csrfToken)
       return headers;
     },
   }),
