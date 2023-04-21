@@ -5,10 +5,10 @@ export const userApi = createApi({
     baseUrl: '',
     tagTypes: ['CurrentUser'],
     prepareHeaders(headers) {
-      const csrfToken = document.querySelector('[name=csrf-token]').content;
+      let csrfToken = document.querySelector('[name=csrf-token]').content;
       headers.set('X-CSRF-TOKEN', csrfToken);
       headers.set('Accept', 'application/json');
-
+      console.log(csrfToken)
       return headers;
     },
   }),
@@ -17,15 +17,19 @@ export const userApi = createApi({
       query: () => `/api/current_user`,
       providesTags: ['CurrentUser']
     }),
-    login: build.query({
-      query: () => `/users/sign_in`,
+    login: build.mutation({
+      query: (body) => ({
+        url: `/users/sign_in`,
+        method: 'POST',
+        body: {user: body}
+      }),
       invalidatesTags: ['CurrentUser']
     }),
     signup: build.mutation({
       query: (body) => ({
-        url: `/users/sign_out`,
+        url: `/users/sign_up`,
         method: 'POST',
-        body: body
+        body: {user: body}
       }),
       invalidatesTags: ['CurrentUser']
     }),
@@ -39,4 +43,4 @@ export const userApi = createApi({
   }),
 })
 
-export const { useCurrentUserQuery, useSignupMutation, useLoginQuery, useLogoutMutation } = userApi
+export const { useCurrentUserQuery, useSignupMutation, useLoginMutation, useLogoutMutation } = userApi

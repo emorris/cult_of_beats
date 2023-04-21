@@ -12,8 +12,8 @@ import UserMenu from './UserMenu'
 export default function Header() {
   const [userDropDownVisible, setUserDropDown] = useState(false);
   const currentUserQuery = useCurrentUserQuery()
-  console.log(currentUserQuery)
   let currentUser = null
+  
   if(currentUserQuery.status == "fulfilled"){
     currentUser = currentUserQuery.data.data
   }

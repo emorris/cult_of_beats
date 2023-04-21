@@ -1,26 +1,21 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useGetCurrentUserQuery } from '../../reducers/currentUserApi'
-
+import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from '../../reducers/currentUserApi'
+import {loadingSpinner} from '../../helpers/loading'
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const csrfToken = document.querySelector('[name=csrf-token]').content;
-
-  function loginClick(){
-    fetch("/users/sign_in", {
-      method: "POST",
-      headers: {
-        'X-CSRF-TOKEN': csrfToken,
-        "Content-Type": "application/json",
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({"user": { email: email, password: password }}),
-    })
-      .then((r) => r.json())
-      .then((user) => {console.log(user)})
-  }
+  const [loginQuery, { isLoading }] = useLoginMutation()
+  const navigate = useNavigate();
   
+  const loginClick = async () => {
+    if (password && email) {
+      await loginQuery({ email, password })
+      window.location.replace('/');
+    }
+  }
   return (
       <div className="grid flex-grow card place-items-center">
         <div className="card w-96 bg-primary text-primary-content">
@@ -43,7 +38,9 @@ export default function Login() {
                 className="input input-bordered w-full max-w-xs text-black" />
             </div>
             <div className="card-actions justify-end">
-              <button onClick={() => loginClick()} className="btn">Sign In</button>
+              <button onClick={() => loginClick()} className="btn gap-2">
+                  Sign In {loadingSpinner(isLoading)}
+              </button>
             </div>
           </div>
         </div>

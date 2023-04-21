@@ -21,7 +21,12 @@ export default function SignUp() {
       .then((r) => r.json())
       .then((user) => {console.log(user)})
   }
-  
+  // const createUser = async () => {
+  //   if (title && content) {
+  //     await updatePost({ id: postId, title, content })
+  //     history.push(`/posts/${postId}`)
+  //   }
+  // }
   
   return (
       <div className="grid flex-grow card place-items-center">

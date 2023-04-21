@@ -14,10 +14,10 @@ export default function Logout() {
     const logoutUser = noMoreUser()
   },[])
 
-  console.log(data, data.isLoading, data.status)
+
   if(!data.isUninitialized && !data.isLoading){
-    navigate("/", { replace: true });
+    window.location.replace('/');
   }
 
-  return <></>
+  return (<></>)
 };
