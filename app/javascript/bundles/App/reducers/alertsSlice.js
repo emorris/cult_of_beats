@@ -26,8 +26,10 @@ export const alertsSlice = createSlice({
         return {payload}
       },
     },
-    removeAlert: (state) => {
-      state.value -= 1
+    removeAlert: (state, action) => {
+      console.log(action)
+      const id  = action.payload; 
+      state.value = state.value.filter(item => item.id !== id)
     }
   },
 })
