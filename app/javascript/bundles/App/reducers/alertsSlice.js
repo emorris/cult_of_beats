@@ -3,11 +3,11 @@ var { nanoid } = require("nanoid");
 
 const addId = (payload) =>{
   const id = nanoid()
-  return { payload: { id, ...payload } }
+  return { id, ...payload }
 }
 
 const addType = (payload, type) =>{
-  return { payload: { type, ...payload } }
+  return { type, ...payload }
 }
 
 export const alertsSlice = createSlice({
@@ -18,13 +18,12 @@ export const alertsSlice = createSlice({
   reducers: {
     addError: {
       reducer: (state, action) => {
-        console.log(action)
         state.value.push(action.payload)
       },
       prepare: (payload) => {
         payload = addId(payload)
         payload = addType(payload, "error")
-        return addType
+        return {payload}
       },
     },
     removeAlert: (state) => {
