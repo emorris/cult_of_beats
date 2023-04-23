@@ -17,7 +17,7 @@ export const userLinks =[
     },
     {
         name: "Settings",
-        url: "/settings"
+        url: "/settings/account"
     },
     {
         name: "Logout",

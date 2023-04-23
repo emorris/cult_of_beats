@@ -20,18 +20,10 @@ export default function Password() {
   }
   
   return (
-      <div className="grid flex-grow card place-items-center">
+      <div className="grid flex-grow card">
         <div className="card w-96 bg-neutral text-neutral-content">
             <div className="card-body">
               <h2 className="card-title">Change Password</h2>
-              <div className="form-control w-full max-w-xs">
-                <input 
-                  value={email} 
-                  onChange={e => setEmail(e.target.value)}
-                  type="text" 
-                  placeholder="Email" 
-                  className="input input-bordered w-full max-w-xs  text-black" />
-              </div>
               <div className="form-control w-full max-w-xs">
                 <input 
                   value={password} 
