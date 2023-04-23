@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function BasicAlert() {
   const alerts = useSelector((state) => state.alerts.value)
   const dispatch = useDispatch()
-  console.log("Hello User Settings")
 
   return (
     <div className="w-full flex flex-col sm:flex-row flex-grow overflow-hidden">

@@ -21,7 +21,7 @@ const App = (props) => (
             element={<Home />}
           />
           <Route
-            path="/user/settings"
+            path="/settings"
             element={<UserSettings />}
           />
           
