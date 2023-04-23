@@ -27,7 +27,6 @@ export default function Login() {
   }
   return (
       <div className="grid flex-grow card place-items-center">
-        <button onClick={() => addAlert()}>ADD ALERT</button>
         <div className="card w-96 bg-primary text-primary-content">
           <div className="card-body ">
             <h2 className="card-title">Login</h2>

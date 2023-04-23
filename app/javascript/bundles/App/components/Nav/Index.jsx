@@ -2,24 +2,25 @@ import React from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import {mainLinks} from "./NavLinks"
-import { Link } from "react-router-dom";
+
 import { useCurrentUserQuery } from '../../reducers/currentUserApi'
 
 import LoginSignUpBtn from './LoginSignUpBtn';
 import UserMenu from './UserMenu'
+import { NavLink } from "react-router-dom";
 
 
 export default function Header() {
   const [userDropDownVisible, setUserDropDown] = useState(false);
   const currentUserQuery = useCurrentUserQuery()
   let currentUser = null
-  
+
   if(currentUserQuery.status == "fulfilled"){
     currentUser = currentUserQuery.data.data
   }
   const mainLinksElements = mainLinks.map((link) => {
     return(
-      <li key={link.url}><Link to={link.url}>{link.name}</Link></li>
+      <li key={link.url}><NavLink to={link.url}>{link.name}</NavLink></li>
     )
   })
 
