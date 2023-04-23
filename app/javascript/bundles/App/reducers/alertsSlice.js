@@ -10,6 +10,12 @@ const addType = (payload, type) =>{
   return { type, ...payload }
 }
 
+const processAlert = (payload, type) => {
+  payload = addId(payload)
+  payload = addType(payload, type)
+  return {payload}
+}
+
 export const alertsSlice = createSlice({
   name: 'alerts',
   initialState: {
@@ -21,9 +27,31 @@ export const alertsSlice = createSlice({
         state.value.push(action.payload)
       },
       prepare: (payload) => {
-        payload = addId(payload)
-        payload = addType(payload, "error")
-        return {payload}
+        return processAlert(payload, "error")
+      },
+    },
+    addInfo: {
+      reducer: (state, action) => {
+        state.value.push(action.payload)
+      },
+      prepare: (payload) => {
+        return processAlert(payload, "info")
+      },
+    },
+    addSuccess: {
+      reducer: (state, action) => {
+        state.value.push(action.payload)
+      },
+      prepare: (payload) => {
+        return processAlert(payload, "success")
+      },
+    },
+    addWarning: {
+      reducer: (state, action) => {
+        state.value.push(action.payload)
+      },
+      prepare: (payload) => {
+        return processAlert(payload, "warning")
       },
     },
     removeAlert: (state, action) => {
