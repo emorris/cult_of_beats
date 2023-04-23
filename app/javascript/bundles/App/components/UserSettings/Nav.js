@@ -8,8 +8,8 @@ export default function Nav() {
       <ul className="menu menu-compact flex flex-col p-0 px-4">
         <li>
           <NavLink to="/settings/account" id="" className="flex gap-4   ">
-            <span className="flex-none"></span>
-            <span className="flex-1">Account Settings</span> 
+            <div className="fa fa-user-pen fa-1x"></div>
+            <span className="flex-1">Account Settings</span>
           </NavLink> 
         </li>
       </ul>
