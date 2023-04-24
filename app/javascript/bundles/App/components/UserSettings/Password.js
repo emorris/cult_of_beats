@@ -21,7 +21,7 @@ export default function Password() {
   
   return (
       <div className="grid flex-grow card">
-        <div className="card w-96 bg-neutral text-neutral-content">
+        <div className="card max-w-xl bg-neutral text-neutral-content">
             <div className="card-body">
               <h2 className="card-title">Change Password</h2>
               <div className="form-control w-full max-w-xs">

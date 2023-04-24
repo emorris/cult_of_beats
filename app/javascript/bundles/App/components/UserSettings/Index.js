@@ -2,10 +2,10 @@
 
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Password from "./Password"
+import Account from "./Account"
 import Nav from "./Nav"
 
-export default function BasicAlert() {
+export default function UserSettings() {
   const alerts = useSelector((state) => state.alerts.value)
   const dispatch = useDispatch()
 
@@ -15,7 +15,7 @@ export default function BasicAlert() {
         <Nav />
       </div>
       <main role="main" className="w-full h-full flex-grow p-3 overflow-auto">
-        <Password />
+        <Account />
       </main>
     </div>
   )
