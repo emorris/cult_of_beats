@@ -16,6 +16,22 @@ export const userApi = createApi({
       query: () => `/api/current_user`,
       providesTags: ['CurrentUser']
     }),
+    updatePassword: build.mutation({
+      query: (body) => ({
+        url: `/api/current_user/password`,
+        method: 'PUT',
+        body: {user: body}
+      }),
+      invalidatesTags: ['CurrentUser']
+    }),
+    updateProfile: build.mutation({
+      query: (body) => ({
+        url: `/api/current_user`,
+        method: 'PUT',
+        body: {user: body}
+      }),
+      invalidatesTags: ['CurrentUser']
+    }),
     login: build.mutation({
       query: (body) => ({
         url: `/users/sign_in`,

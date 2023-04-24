@@ -11,7 +11,6 @@ import { NavLink } from "react-router-dom";
 
 
 export default function Header() {
-  const [userDropDownVisible, setUserDropDown] = useState(false);
   const currentUserQuery = useCurrentUserQuery()
   let currentUser = null
 
@@ -44,7 +43,6 @@ export default function Header() {
             </ul>
         </div>
         <div className="navbar-end">
-          
           { currentUser == null ? <LoginSignUpBtn /> : <UserMenu user={currentUser} /> }        
         </div>
     </div>

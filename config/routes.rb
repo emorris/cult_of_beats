@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :users
-    get "/current_user", to:"users#index"
+    resources :current_user do 
+      put "/password", to: "current_user#password"
+    end
   end
 
   get 'index', to: 'home#index'
