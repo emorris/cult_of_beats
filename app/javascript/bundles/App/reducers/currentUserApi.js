@@ -24,7 +24,7 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['CurrentUser']
     }),
-    updateProfile: build.mutation({
+    updateUserInfo: build.mutation({
       query: (body) => ({
         url: `/api/current_user`,
         method: 'PUT',
@@ -64,5 +64,5 @@ export const {
   useLoginMutation,
   useLogoutMutation, 
   useUpdatePasswordMutation,
-  useUpdateProfileMutation
+  useUpdateUserInfoMutation
 } = userApi

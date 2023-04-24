@@ -1,6 +1,6 @@
-class UserSerializer
+class CurrentUserSerializer
   include JSONAPI::Serializer
-  attributes :user_name, :created_at
+  attributes :user_name, :created_at, :email
 
   attribute :avatar do |user|
     if user.avatar.attached?

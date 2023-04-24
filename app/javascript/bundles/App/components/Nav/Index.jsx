@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
   const currentUserQuery = useCurrentUserQuery()
   let currentUser = null
-
+  console.log(currentUserQuery)
   if(currentUserQuery.status == "fulfilled"){
     currentUser = currentUserQuery.data.data
   }
