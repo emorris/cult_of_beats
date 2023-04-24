@@ -1,21 +1,21 @@
 import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useGetCurrentUserQuery } from '../../reducers/currentUserApi'
-import { useSignupMutation } from '../../reducers/currentUserApi'
+import { useUpdatePasswordMutation } from '../../reducers/currentUserApi'
+import { useDispatch } from 'react-redux'
+import {addSuccess, addError} from "../../reducers/alertsSlice"
 import {loadingSpinner} from '../../helpers/loading'
-
+import {passwordValid} from "../../helpers/settings"
 export default function Password() {
-  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
-  const csrfToken = document.querySelector('[name=csrf-token]').content;
-  const [signupQuery, { isLoading }] = useSignupMutation()
+  const [passwordQuery, { isLoading }] = useUpdatePasswordMutation()
+  const dispatch = useDispatch()
 
-
-  const signupClick = async () => {
-    if (password && email && passwordConfirmation) {
-      await signupQuery({ email, password, password_confirmation: passwordConfirmation })
-      window.location.replace('/');
+  const changePassword = async () => {
+    if (passwordValid(password, passwordConfirmation)) {
+      await passwordQuery({  password, password_confirmation: passwordConfirmation })
+      dispatch(addSuccess("Password Change"))
+    }else{
+      dispatch(addError("Password do not Match"))
     }
   }
   
@@ -41,8 +41,7 @@ export default function Password() {
                   className="input input-bordered w-full max-w-xs text-black" />
               </div>
               <div className="card-actions justify-end">
-                <button 
-                  disabled={isLoading}
+                <button
                   onClick={() => changePassword()} 
                   className="btn btn-primary gap-2">
                     Change Password {loadingSpinner(isLoading)}

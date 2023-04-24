@@ -9,10 +9,14 @@ class Api::CurrentUserController < Api::RootController
   end
 
   def password
-    byebug
+    current_user.update(
+      password: params[:password],
+      password_confirmation: params[:password_confirmation] 
+    )
+    render json: {}
   end
 
   def update
-    byebug
+    debugger
   end
 end

@@ -1,19 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 var { nanoid } = require("nanoid");
 
-const addId = (payload) =>{
+
+
+const processAlert = (msg, type) => {
   const id = nanoid()
-  return { id, ...payload }
-}
-
-const addType = (payload, type) =>{
-  return { type, ...payload }
-}
-
-const processAlert = (payload, type) => {
-  payload = addId(payload)
-  payload = addType(payload, type)
-  return {payload}
+  return {payload: { type, id, msg } }
 }
 
 export const alertsSlice = createSlice({
@@ -55,7 +47,6 @@ export const alertsSlice = createSlice({
       },
     },
     removeAlert: (state, action) => {
-      console.log(action)
       const id  = action.payload; 
       state.value = state.value.filter(item => item.id !== id)
     }
@@ -63,6 +54,12 @@ export const alertsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {removeAlert, addError } = alertsSlice.actions
+export const {
+  removeAlert, 
+  addError,
+  addInfo,
+  addSuccess,
+  addWarning
+} = alertsSlice.actions
 
 export default alertsSlice.reducer
