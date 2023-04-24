@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addError} from '../../reducers/alertsSlice'
-
+import {addSuccess, addError} from "../../reducers/alertsSlice"
 import { useCurrentUserQuery } from '../../reducers/currentUserApi'
 import { useUpdateUserInfoMutation } from '../../reducers/currentUserApi'
 
@@ -12,12 +11,14 @@ import Email from './UserInfoSub/Email'
 import Username from './UserInfoSub/Username'
 export default function UserInfo() {
   const currentUserQuery = useCurrentUserQuery()
-  const userInfo = currentUserQuery.data.data.attributes
+  const userInfo = useMemo(() =>  currentUserQuery.data.data.attributes, [currentUserQuery.data.data])
+ 
   const [userInfoQuery, { isLoading }] = useUpdateUserInfoMutation()
   
   const [params, setParamState] = useState({
-    email: null,
-    password: null,
+    email: userInfo.email,
+    avatar: userInfo.avatar,
+    user_name: userInfo.user_name
   })
   
   const dispatch = useDispatch()
@@ -28,20 +29,23 @@ export default function UserInfo() {
 
 
   const updateUserInfo = async () => {
-    if (params.password && params.email) {
-      await userInfoQuery(params)
-      window.location.replace('/');
+    console.log(params)
+    if (params.user_name && params.email) {
+      const res = await userInfoQuery(params)
+      console.log(res)
+      dispatch(addSuccess("user info updated"))
     }
   }
-  console.log(userInfo)
   return (
       <div className="grid flex-grow card ">
         <div className="card max-w-xl bg-neutral text-neutral-content">
           <div className="card-body ">
             <h2 className="card-title">User Info</h2> 
-              <Avatar data={userInfo.avatar} />
-              <Email data={userInfo.email} />
-              <Username data={userInfo.user_name} />
+              <form>
+                <Avatar data={userInfo.avatar} onChange={handleChange} />
+                <Email data={userInfo.email}  onChange={handleChange} />
+                <Username data={userInfo.user_name} onChange={handleChange} />
+              </form>
               <div className="card-actions justify-end">
                 <button
                   onClick={() => updateUserInfo()} 

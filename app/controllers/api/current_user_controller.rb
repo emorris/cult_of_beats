@@ -1,6 +1,6 @@
 class Api::CurrentUserController < Api::RootController
   before_action :authenticate_user!
-  def index
+  def show
     if current_user
       render json: CurrentUserSerializer.new(current_user)
     else
@@ -17,6 +17,12 @@ class Api::CurrentUserController < Api::RootController
   end
 
   def update
-    debugger
+    current_user.update(user_params)
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:user_name, :email)
+    end
 end

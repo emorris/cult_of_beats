@@ -12,7 +12,8 @@ export default function Password() {
 
   const changePassword = async () => {
     if (passwordValid(password, passwordConfirmation)) {
-      await passwordQuery({  password, password_confirmation: passwordConfirmation })
+      const res = await passwordQuery({  password, password_confirmation: passwordConfirmation })
+      console.log(res)
       dispatch(addSuccess("Password Change"))
     }else{
       dispatch(addError("Password do not Match"))
@@ -22,24 +23,27 @@ export default function Password() {
   return (
       <div className="grid flex-grow card">
         <div className="card max-w-xl bg-neutral text-neutral-content">
+          <form>
             <div className="card-body">
               <h2 className="card-title">Change Password</h2>
-              <div className="form-control w-full max-w-xs">
-                <input 
-                  value={password} 
-                  onChange={e => setPassword(e.target.value)}
-                  type="password" 
-                  placeholder="Password" 
-                  className="input input-bordered w-full max-w-xs text-black" />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <input 
-                  value={passwordConfirmation} 
-                  onChange={e => setPasswordConfirmation(e.target.value)}
-                  type="password" 
-                  placeholder="Password Confirmation" 
-                  className="input input-bordered w-full max-w-xs text-black" />
-              </div>
+            
+                <div className="form-control w-full max-w-xs">
+                  <input 
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)}
+                    type="password" 
+                    placeholder="Password" 
+                    className="input input-bordered w-full max-w-xs text-black" />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <input 
+                    value={passwordConfirmation} 
+                    onChange={e => setPasswordConfirmation(e.target.value)}
+                    type="password" 
+                    placeholder="Password Confirmation" 
+                    className="input input-bordered w-full max-w-xs text-black" />
+                </div>
+            
               <div className="card-actions justify-end">
                 <button
                   onClick={() => changePassword()} 
@@ -47,7 +51,8 @@ export default function Password() {
                     Change Password {loadingSpinner(isLoading)}
                 </button>
               </div>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     )

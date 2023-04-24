@@ -2,14 +2,18 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-export default function Email({data}) {
+export default function Email({data, onChange}) {
 
   return (
     <div class="form-control">
       <label className="label">
         <span className="label-text  text-neutral-content">Email</span>
       </label>
-      <input value={data} type="text" placeholder="" className="input input-bordered" />
+      <input 
+        onChange={onChange} 
+        defaultValue={data} 
+        name="email"
+        type="text" placeholder="" className="input input-bordered" />
     </div>
   )
 }
