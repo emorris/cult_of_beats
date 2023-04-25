@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import { useUpdatePasswordMutation } from '../../reducers/currentUserApi'
+import { useUpdatePasswordMutation } from '../../../reducers/currentUserApi'
 import { useDispatch } from 'react-redux'
-import {addSuccess, addError} from "../../reducers/alertsSlice"
-import {loadingSpinner} from '../../helpers/loading'
-import {passwordValid} from "../../helpers/settings"
+import {addSuccess, addError} from "../../../reducers/alertsSlice"
+import {loadingSpinner} from '../../../helpers/loading'
+import {passwordValid} from "../../../helpers/settings"
 export default function Password() {
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();

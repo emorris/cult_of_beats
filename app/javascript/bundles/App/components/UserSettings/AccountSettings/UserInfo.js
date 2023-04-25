@@ -1,14 +1,14 @@
 import React, {useMemo, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import {addSuccess, addError} from "../../reducers/alertsSlice"
-import { useCurrentUserQuery } from '../../reducers/currentUserApi'
-import { useUpdateUserInfoMutation } from '../../reducers/currentUserApi'
+import {addSuccess, addError} from "../../../reducers/alertsSlice"
+import { useCurrentUserQuery } from '../../../reducers/currentUserApi'
+import { useUpdateUserInfoMutation } from '../../../reducers/currentUserApi'
 
-import {loadingSpinner} from '../../helpers/loading'
-import Avatar from './UserInfoSub/Avatar'
-import Email from './UserInfoSub/Email'
-import Username from './UserInfoSub/Username'
+import {loadingSpinner} from '../../../helpers/loading'
+import Avatar from './Avatar'
+import Email from './Email'
+import Username from './Username'
 
 export default function UserInfo() {
   const currentUserQuery = useCurrentUserQuery()

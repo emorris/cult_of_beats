@@ -11,6 +11,10 @@ export default function Nav() {
             <div className="fa fa-user-pen fa-1x"></div>
             <span className="flex-1">Account Settings</span>
           </NavLink> 
+          <NavLink to="/settings/profile" id="" className="flex gap-4   ">
+            <div className="fa fa-globe fa-1x"></div>
+            <span className="flex-1">Profile</span>
+          </NavLink> 
         </li>
       </ul>
     </div>

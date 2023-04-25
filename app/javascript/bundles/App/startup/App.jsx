@@ -8,7 +8,8 @@ import Home from '../components/Home/Index';
 import Login from '../components/LoginSignUp/Index'
 import Logout from '../components/LoginSignUp/Logout'
 import Alerts from '../components/Alerts/Index'
-import UserAccount from '../components/UserSettings/Index.js'
+import UserAccount from '../components/UserSettings/AccountSettings.js'
+import UserProfile from '../components/UserSettings/Profile.js'
 
 
 const App = (props) => (
@@ -20,7 +21,7 @@ const App = (props) => (
             path="/"
             element={<Home />}
           />
-           <Route
+          <Route
             path="/login"
             element={<Login />}
           />
@@ -28,15 +29,16 @@ const App = (props) => (
             path="/logout"
             element={<Logout />}
           />
-
           <Route path="/settings/" element={<UserSettings />}>
             <Route
               path="account"
               element={<UserAccount />}
             />
+            <Route
+              path="profile"
+              element={<UserProfile />}
+            />
           </Route>
-          
-
         </Routes>
       </MainApp>
     </BrowserRouter>
