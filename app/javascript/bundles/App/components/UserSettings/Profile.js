@@ -7,8 +7,8 @@ import { useCurrentUserQuery } from '../../reducers/currentUserApi'
 export default function Index() {
   const isLoading = false
   const currentUserQuery = useCurrentUserQuery()
-  const userInfo = currentUserQuery.data.data.attributes
-
+  const userProfile = currentUserQuery.data.data.attributes.user_profile.data
+  console.log(userProfile)
   const handleChange = ({target: { name, value }}) =>{
     const [params, setParamState] = useState({})
     setParamState((prev) => ({ ...prev, [name]: value }))
@@ -16,8 +16,7 @@ export default function Index() {
 
   return (
       <div class="flex flex-col w-full gap-4 ">
-        <ContentLinks />
-        <Info />
+       
       </div>
     )
 }

@@ -25,8 +25,18 @@ const inputs =[
 
 ]
 
-export default function ContentLinks({onChange, isLoading, updateProfile}) {
+export default function ContentLinks({userProfile}) {
+  console.log(userProfile)
+  const isLoading = false
+  const default_params = inputs.reduce((map, obj) => {
+    map[obj.nameId] = userProfile.site_links[obj.nameId]
+    return map
+  }, {})
+  const [params, setParamState] = useState(default_params)
   
+  const updateProfile = () => {
+    
+  }
   const links = () => {
     return inputs.map((item) => {
       return (        
@@ -37,6 +47,7 @@ export default function ContentLinks({onChange, isLoading, updateProfile}) {
             </span>
             <input 
               onChange={onChange} 
+              defaultValue={params[item.nameId]}
               name={item.name}
               placeholder={item.name}
               type="text" 

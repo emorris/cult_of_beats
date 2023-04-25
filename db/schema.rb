@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_184826) do
     t.string "name"
     t.string "bio"
     t.string "path_name"
-    t.jsonb "site_links"
+    t.jsonb "site_links", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
