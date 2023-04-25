@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
-  get '/*all', to: 'home#index'
+  get '/*all', to: 'home#index', constraints: lambda { |request| !request.fullpath.include?('rails/active_storage') }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")

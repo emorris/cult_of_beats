@@ -28,7 +28,7 @@ export const userApi = createApi({
       query: (body) => ({
         url: `/api/current_user`,
         method: 'PUT',
-        body: {user: body}
+        body: body
       }),
       invalidatesTags: ['CurrentUser']
     }),
