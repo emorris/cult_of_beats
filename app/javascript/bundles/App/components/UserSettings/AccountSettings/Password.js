@@ -26,7 +26,6 @@ export default function Password() {
           <form>
             <div className="card-body">
               <h2 className="card-title">Change Password</h2>
-            
                 <div className="form-control w-full max-w-xs">
                   <input 
                     value={password} 

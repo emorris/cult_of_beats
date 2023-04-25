@@ -7,4 +7,8 @@ class CurrentUserSerializer
       Rails.application.routes.url_helpers.rails_blob_url(user.avatar, only_path: true)
     end
   end
+
+  attribute :user_profile do |user|
+    UserProfileSerializer.new(user.user_profile)
+  end
 end

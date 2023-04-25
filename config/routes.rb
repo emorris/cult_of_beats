@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   namespace :api do
-    resources :users
+    resources :users do 
+      put "/profile",  to: "user_profiles#update"
+    end
     resource :current_user, :controller => :current_user do 
       put "/password", to: "current_user#password"
     end

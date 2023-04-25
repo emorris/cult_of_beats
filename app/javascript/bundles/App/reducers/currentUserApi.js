@@ -55,6 +55,14 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['CurrentUser']
     }),
+    updateUserProfile: build.mutation({
+      query: (id, body) => ({
+        url: `/users/profiles/{id}`,
+        method: 'PUT',
+        body: {user_profile: body}
+      }),
+      invalidatesTags: ['CurrentUser']
+    }),
   }),
 })
 
