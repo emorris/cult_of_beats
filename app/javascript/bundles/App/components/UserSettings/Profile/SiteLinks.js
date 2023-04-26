@@ -5,27 +5,32 @@ import CardLayout from '../CardLayout'
 import { handleChange } from '../../../helpers/form'
 import { useUpdateUserProfileMutation } from '../../../reducers/currentUserApi'
 import {addSuccess, addError} from "../../../reducers/alertsSlice"
-
+import InputFields from '../General/InputFields'
 const inputs =[
   {
     name: "Instagram",
-    nameId: "instagram"
+    nameId: "instagram",
+    inputType: "group"
   },
   {
     name: "Soundcloud",
-    nameId: "soundcloud"
+    nameId: "soundcloud",
+    inputType: "group"
   },
   {
     name: "Youtube",
-    nameId: "youtube"
+    nameId: "youtube",
+    inputType: "group"
   },
   {
     name: "Spotify",
-    nameId: "spotify"
+    nameId: "spotify",
+    inputType: "group"
   },
   {
     name: "TikTok",
-    nameId: "tiktok"
+    nameId: "tiktok",
+    inputType: "group"
   },
 
 ]
@@ -50,30 +55,14 @@ export default function SiteLinks({userProfile}) {
 
   const onInputChange = handleChange(setParamState)
 
-  const links = () => {
-    return inputs.map((item) => {
-      return (        
-        <div className="form-control flex" key={`content-link-${item.nameId}`}> 
-          <label className="input-group">
-            <span className='w-16 place-content-center'>
-              <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>
-            </span>
-            <input 
-              onChange={onInputChange} 
-              defaultValue={params[item.nameId]}
-              name={item.nameId}
-              placeholder={item.name}
-              type="text" 
-              className="input input-border w-full" />
-          </label>
-        </div>
-      )
-    })
-  }
 
   return (
     <CardLayout title={"Content Links"} isLoading={isLoading} onClick={updateProfile}>
-      {links()}
+      <InputFields
+       inputTypes={inputs} 
+       onChange={onInputChange}
+       defaultValues={params}
+      />
     </CardLayout>
   )
   
