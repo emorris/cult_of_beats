@@ -46,8 +46,6 @@ export default function SiteLinks({userProfile}) {
   const updateProfile  = async () => {
     const res = await updateProfileLinks({id, body: {site_links: params}})
     dispatch(addSuccess("Links Updated"))
-    
-
   }
 
   const onInputChange = handleChange(setParamState)

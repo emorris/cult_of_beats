@@ -28,6 +28,7 @@ export default function Password() {
                 <div className="form-control w-full max-w-xs">
                   <input 
                     value={password} 
+                    autoComplete="new-password"
                     onChange={e => setPassword(e.target.value)}
                     type="password" 
                     placeholder="Password" 
@@ -36,6 +37,7 @@ export default function Password() {
                 <div className="form-control w-full max-w-xs">
                   <input 
                     value={passwordConfirmation} 
+                    autoComplete="new-password"
                     onChange={e => setPasswordConfirmation(e.target.value)}
                     type="password" 
                     placeholder="Password Confirmation" 
