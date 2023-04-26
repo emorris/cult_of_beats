@@ -2,6 +2,9 @@
 import React, {useState} from 'react'
 import CardLayout from '../CardLayout'
 import { handleChange } from '../../../helpers/form'
+import { useUpdateUserProfileMutation } from '../../../reducers/currentUserApi'
+import {addSuccess, addError} from "../../../reducers/alertsSlice"
+
 const inputs =[
   {
     name: "Instagram",
@@ -29,8 +32,7 @@ const inputs =[
 export default function ContentLinks({userProfile}) {
   const id = userProfile.id
   const savedData = userProfile.attributes
-  const isLoading = false
-  
+  const [updateProfileLinks, { isLoading }] = useUpdateUserProfileMutation()
   const default_params = inputs.reduce((map, obj) => {
     map[obj.nameId] = savedData.site_links[obj.nameId]
     return map
@@ -38,16 +40,16 @@ export default function ContentLinks({userProfile}) {
   
   const [params, setParamState] = useState(default_params)
   
-  const updateProfile = () => {
-    
+  const updateProfile  = async () => {
+    const res = await updateProfileLinks(id, params)
+    console.log(res)
+
   }
-  
-  console.log(params)
 
   const links = () => {
     return inputs.map((item) => {
       return (        
-        <div class="form-control flex" key={`content-link-${item.nameId}`}> 
+        <div className="form-control flex" key={`content-link-${item.nameId}`}> 
           <label className="input-group">
             <span className='w-16 place-content-center'>
               <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>

@@ -35,7 +35,7 @@ export default function Avatar({attributes, onChange}) {
   }
 
   return (
-    <div class="flex flex-row">
+    <div className="flex flex-row">
       <div className="form-control max-w-xs">
         <div className="avatar placeholder">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

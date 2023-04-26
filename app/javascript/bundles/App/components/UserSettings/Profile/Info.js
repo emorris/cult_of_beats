@@ -22,7 +22,7 @@ export default function Info({onChange, isLoading}) {
   const inputFields = () => {
     return basicProfileInfoInputs.map((item) => {
       return (        
-        <div class="form-control flex" key={`profileInfo-${item.nameId}`}>
+        <div className="form-control flex" key={`profileInfo-${item.nameId}`}>
           <label className="label">
             <span className="label-text  text-neutral-content">{item.name}</span>
           </label>
@@ -41,7 +41,7 @@ export default function Info({onChange, isLoading}) {
   return (
     <CardLayout title={"Content Links"} isLoading={isLoading} onClick={updateProfile}>
      {inputFields()}
-     <div class="form-control">
+     <div className="form-control">
         <span className='w-16 place-content-center'>Bio</span>
           
           <textarea 

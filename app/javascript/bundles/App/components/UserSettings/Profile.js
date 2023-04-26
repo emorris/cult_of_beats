@@ -9,7 +9,7 @@ export default function Index() {
   const currentUserQuery = useCurrentUserQuery()
   const userProfile = currentUserQuery.data.data.attributes.user_profile.data
   return (
-      <div class="flex flex-col w-full gap-4 ">
+      <div className="flex flex-col w-full gap-4 ">
         <ContentLinks userProfile={userProfile} />
       </div>
     )

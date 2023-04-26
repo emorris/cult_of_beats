@@ -72,5 +72,6 @@ export const {
   useLoginMutation,
   useLogoutMutation, 
   useUpdatePasswordMutation,
-  useUpdateUserInfoMutation
+  useUpdateUserInfoMutation,
+  useUpdateUserProfileMutation
 } = userApi

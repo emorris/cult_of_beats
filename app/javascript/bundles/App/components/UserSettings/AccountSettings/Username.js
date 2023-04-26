@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function Username({data, onChange}) {
 
   return (
-    <div class="form-control">
+    <div className="form-control">
       <label className="label">
         <span className="label-text  text-neutral-content">Username</span>
       </label>
