@@ -10,11 +10,15 @@ class Api::UserProfilesController < Api::RootController
   end
 
   def update
-    current_user.user_profile.update(profile_params)
+    current_user.user_profile.update(user_profile_params)
+    render json: {}
   end
 
   private
-  def profile_params
-    params.require(:profile).permit(:user_name, :email, :avatar)
+  def user_profile_params
+    params.require(:user_profile).permit(
+        :name, :bio, :path_name, 
+        site_links:[UserProfile::SITE_LINK_TYPES]
+    )
   end
 end

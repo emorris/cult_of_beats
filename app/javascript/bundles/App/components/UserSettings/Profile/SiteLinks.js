@@ -29,7 +29,7 @@ const inputs =[
 
 ]
 
-export default function ContentLinks({userProfile}) {
+export default function SiteLinks({userProfile}) {
   const id = userProfile.id
   const savedData = userProfile.attributes
   const [updateProfileLinks, { isLoading }] = useUpdateUserProfileMutation()
@@ -41,10 +41,14 @@ export default function ContentLinks({userProfile}) {
   const [params, setParamState] = useState(default_params)
   
   const updateProfile  = async () => {
-    const res = await updateProfileLinks(id, params)
+    const res = await updateProfileLinks({id, body: {site_links: params}})
     console.log(res)
+    debugger
+    
 
   }
+
+  const onInputChange = handleChange(setParamState)
 
   const links = () => {
     return inputs.map((item) => {
@@ -55,9 +59,9 @@ export default function ContentLinks({userProfile}) {
               <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>
             </span>
             <input 
-              onChange={handleChange(setParamState)} 
+              onChange={onInputChange} 
               defaultValue={params[item.nameId]}
-              name={item.name}
+              name={item.nameId}
               placeholder={item.name}
               type="text" 
               className="input input-border w-full" />

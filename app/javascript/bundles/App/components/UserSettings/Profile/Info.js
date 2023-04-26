@@ -40,7 +40,9 @@ export default function Info({onChange, isLoading}) {
 
   return (
     <CardLayout title={"Content Links"} isLoading={isLoading} onClick={updateProfile}>
+     
      {inputFields()}
+
      <div className="form-control">
         <span className='w-16 place-content-center'>Bio</span>
           
