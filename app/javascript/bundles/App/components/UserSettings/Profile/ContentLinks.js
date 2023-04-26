@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import CardLayout from '../CardLayout'
+import { handleChange } from '../../../helpers/form'
 const inputs =[
   {
     name: "Instagram",
@@ -41,10 +42,7 @@ export default function ContentLinks({userProfile}) {
     
   }
   
-  const handleChange = ({target: { name, value }}) =>{
-    const [params, setParamState] = useState({})
-    setParamState((prev) => ({ ...prev, [name]: value }))
-  }
+  console.log(params)
 
   const links = () => {
     return inputs.map((item) => {
@@ -55,7 +53,7 @@ export default function ContentLinks({userProfile}) {
               <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>
             </span>
             <input 
-              onChange={handleChange} 
+              onChange={handleChange(setParamState)} 
               defaultValue={params[item.nameId]}
               name={item.name}
               placeholder={item.name}
