@@ -4,6 +4,7 @@ import CardLayout from '../CardLayout'
 import { useDispatch } from 'react-redux'
 import { useUpdateUserProfileMutation } from '../../../reducers/currentUserApi'
 import { handleChange } from '../../../helpers/form'
+import {addSuccess, addError} from "../../../reducers/alertsSlice"
 
 const basicProfileInfoInputs =[
   {
@@ -32,7 +33,7 @@ export default function Info({userProfile}) {
   })
   
   const updateProfile  = async () => {
-    const res = await updateProfileLinks({id, body: {site_links: params}})
+    const res = await updateProfileLinks({id, body: params})
     dispatch(addSuccess("Links Updated"))
   }
 
@@ -48,7 +49,7 @@ export default function Info({userProfile}) {
           <input 
             onChange={onInputChange}
             name={item.nameId}
-            defaultValue={params[item.name]}
+            defaultValue={params[item.nameId]}
             type="text" 
             placeholder="" 
             className="input input-bordered"
