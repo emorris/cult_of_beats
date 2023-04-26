@@ -2,7 +2,7 @@ import React from 'react'
 
 function BasicInput({inputTypes, onChange, defaultValues, inputGroup, item}){
   return(
-    <div className="form-control flex" key={`profileInfo-${item.nameId}`}>
+    <div className="form-control flex">
       <label className="label">
         <span className="label-text  text-neutral-content">{item.name}</span>
       </label>
@@ -21,7 +21,7 @@ function BasicInput({inputTypes, onChange, defaultValues, inputGroup, item}){
 
 function GroupInput({inputTypes, onChange, defaultValues, inputGroup, item}){
   return(
-    <div className="form-control flex" key={`content-link-${item.nameId}`}> 
+    <div className="form-control flex"> 
       <label className="input-group">
         <span className='w-16 place-content-center'>
           <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>
@@ -40,11 +40,13 @@ function GroupInput({inputTypes, onChange, defaultValues, inputGroup, item}){
 
 
 export default function InputFields(props) {
+
   return props.inputTypes.map((item) => {
+    let key = `input-link-${item.nameId}`
     if(item.inputType =="group"){
-      return <GroupInput {...props} item={item} />
+      return <GroupInput {...props} item={item} key={key} />
     }else{
-      return <BasicInput {...props} item={item} />
+      return <BasicInput {...props} item={item} key={key} />
     }
   })
 
