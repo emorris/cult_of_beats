@@ -11,6 +11,7 @@ export default function Index() {
   return (
       <div className="flex flex-col w-full gap-4 ">
         <SiteLinks userProfile={userProfile} />
+        <Info userProfile={userProfile} />
       </div>
     )
 }
