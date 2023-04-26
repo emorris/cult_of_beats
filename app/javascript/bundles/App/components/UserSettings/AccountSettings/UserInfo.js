@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import {addSuccess, addError} from "../../../reducers/alertsSlice"
 import { useCurrentUserQuery } from '../../../reducers/currentUserApi'

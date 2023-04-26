@@ -1,6 +1,6 @@
 
 import React, {useState,useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getUserIcon } from '../../../helpers/user'
 export default function Avatar({attributes, onChange}) {
 
@@ -18,12 +18,12 @@ export default function Avatar({attributes, onChange}) {
   }, [selectedFile])
 
   const onAvatarSelect = (e) => {
-      if (!e.target.files || e.target.files.length === 0) {
-          setSelectedFile(undefined)
-          return
-      }
-      setSelectedFile(e.target.files[0])
-      onChange(e.target.files[0])
+    if (!e.target.files || e.target.files.length === 0) {
+        setSelectedFile(undefined)
+        return
+    }
+    setSelectedFile(e.target.files[0])
+    onChange(e.target.files[0])
   }
 
   const imageFile = () =>{

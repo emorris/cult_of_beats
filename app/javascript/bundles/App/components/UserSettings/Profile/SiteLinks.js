@@ -1,5 +1,6 @@
 
 import React, {useState} from 'react'
+import { useDispatch } from 'react-redux'
 import CardLayout from '../CardLayout'
 import { handleChange } from '../../../helpers/form'
 import { useUpdateUserProfileMutation } from '../../../reducers/currentUserApi'
@@ -33,6 +34,8 @@ export default function SiteLinks({userProfile}) {
   const id = userProfile.id
   const savedData = userProfile.attributes
   const [updateProfileLinks, { isLoading }] = useUpdateUserProfileMutation()
+  const dispatch = useDispatch()
+
   const default_params = inputs.reduce((map, obj) => {
     map[obj.nameId] = savedData.site_links[obj.nameId]
     return map
@@ -42,8 +45,7 @@ export default function SiteLinks({userProfile}) {
   
   const updateProfile  = async () => {
     const res = await updateProfileLinks({id, body: {site_links: params}})
-    console.log(res)
-    debugger
+    dispatch(addSuccess("Links Updated"))
     
 
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 export default function Footer() {

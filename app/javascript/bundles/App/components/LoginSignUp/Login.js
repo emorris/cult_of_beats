@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addError} from '../../reducers/alertsSlice'
 import { useLoginMutation } from '../../reducers/currentUserApi'
 import {loadingSpinner} from '../../helpers/loading'

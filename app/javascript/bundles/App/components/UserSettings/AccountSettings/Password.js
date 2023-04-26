@@ -13,7 +13,6 @@ export default function Password() {
   const changePassword = async () => {
     if (passwordValid(password, passwordConfirmation)) {
       const res = await passwordQuery({  password, password_confirmation: passwordConfirmation })
-      console.log(res)
       dispatch(addSuccess("Password Change"))
     }else{
       dispatch(addError("Password do not Match"))
