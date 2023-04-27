@@ -1,7 +1,10 @@
-<div class="md:container md:mx-auto px-4">
-  <div class="flex flex-wrap">
-  <%  @user_profile.site_links.map do |key, ulr| %>
-    <button class="btn btn-block w-96"><%= key %></button>
+<div class="md:container md:mx-auto">
+  <%  @user_profile.site_links.map do |key, url| %>
+    <div class="grid gap-4 grid-cols-1 justify-items-center">
+      <a href="<%= url %>" target="_blank" class="btn btn-block w-96 ">
+        <i class="fa fa-brands fa-2x fa-<%= key %> mr-2"></i>
+        <%= key %>
+      </button>
+    </a>
   <% end %>
-  </div>
 </div>
