@@ -1,3 +1,9 @@
+<div class="navbar bg-base-100">
+  <a href="/" class="btn btn-ghost normal-case text-xl">cultOfBeats</a>
+  <div class="navbar-center">
+    <a class="btn btn-ghost normal-case text-xl"><%= @user_profile.name %></a>
+  </div>
+</div>
 <div class="md:container md:mx-auto">
   <%  @user_profile.site_links.map do |key, url| %>
     <div class="grid gap-4 grid-cols-1 justify-items-center">

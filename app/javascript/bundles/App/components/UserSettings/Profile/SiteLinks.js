@@ -6,6 +6,7 @@ import { handleChange } from '../../../helpers/form'
 import { useUpdateUserProfileMutation } from '../../../reducers/currentUserApi'
 import {addSuccess, addError} from "../../../reducers/alertsSlice"
 import InputFields from '../General/InputFields'
+
 const instagramRegex = /(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am|instagr.com)\/(.*)/
 const soundcloudRegex = /(?:(?:http|https):\/\/)?(?:www.)?(?:soundcloud.com)\/(\w+)/
 const youtubeRegex = /(?:(?:http|https):\/\/)?(?:www.)?(?:youtube.com|youtu.be)\/(.+)/

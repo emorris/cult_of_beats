@@ -28,8 +28,7 @@ export default function Info({userProfile}) {
   const dispatch = useDispatch()  
   const [params, setParamState] = useState({
     name: savedData.name,
-    bio: savedData.bio,
-    path_name: savedData.path_name
+    bio: savedData.bio
   })
   
   const updateProfile  = async () => {

@@ -17,7 +17,11 @@ function BasicInput({inputTypes, onChange, defaultValues, inputGroup, item}){
   const [value, setValue] = useState();
   
   const validationCheck = (e) => {
-    let valid = item.validate(e.target.value)
+    let valid = true
+    if(item.validate){
+      let valid = item.validate(e.target.value)
+    }
+   
     setValid(valid)
     if(valid){
       return onChange({target: { name: e.target.name, value: e.target.value }})
@@ -50,6 +54,7 @@ function GroupInput({inputTypes, onChange, defaultValues, inputGroup, item}){
   const [value, setValue] = useState();
   
   const validationCheck = (e) => {
+    if(!item.validate) return true
     let valid = item.validate(e.target.value)
     setValid(valid)
     if(valid){
@@ -64,7 +69,7 @@ function GroupInput({inputTypes, onChange, defaultValues, inputGroup, item}){
        <ValidationError show={!valid} item={item} >
           <label className="input-group">
             <span className='w-16 place-content-center'>
-              <div className={`fa fa-brands fa-2x fa-${item.nameId}`}></div>
+             
             </span>
             <input 
               onChange={validationCheck} 
