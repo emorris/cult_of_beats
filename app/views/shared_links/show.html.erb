@@ -1,0 +1,7 @@
+<div class="md:container md:mx-auto px-4">
+  <div class="flex flex-wrap">
+  <%  @user_profile.site_links.map do |key, ulr| %>
+    <button class="btn btn-block w-96"><%= key %></button>
+  <% end %>
+  </div>
+</div>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :share_links, path: "/l/"
+  resources :shared_links, path: "/l/"
 
   
   get "*path", to: 'home#index', constraints: lambda { |request| !request.fullpath.include?('rails/active_storage') }
