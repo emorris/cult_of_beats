@@ -15,8 +15,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  resources :share_links, path: "/l/"
+
   
-  get '/*all', to: 'home#index', constraints: lambda { |request| !request.fullpath.include?('rails/active_storage') }
+  get "*path", to: 'home#index', constraints: lambda { |request| !request.fullpath.include?('rails/active_storage') }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   

@@ -13,11 +13,11 @@ const basicProfileInfoInputs =[
     nameId: "name",
     inputType: "basic"
   },
-  {
-    name: "Url Path Name",
-    nameId: "path_name",
-    inputType: "basic"
-  }
+  // {
+  //   name: "Url Path Name",
+  //   nameId: "path_name",
+  //   inputType: "basic"
+  // }
 ]
 
 

@@ -26,7 +26,6 @@ function BasicInput({inputTypes, onChange, defaultValues, inputGroup, item}){
     }
   }
 
-
   return(
     <div className="form-control flex">
        <ValidationError show={!valid} item={item}>
@@ -45,7 +44,6 @@ function BasicInput({inputTypes, onChange, defaultValues, inputGroup, item}){
     </div>  
   )
 }
-
 
 function GroupInput({inputTypes, onChange, defaultValues, inputGroup, item}){
   const [valid, setValid] = useState(true);

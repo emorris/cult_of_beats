@@ -36,6 +36,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "omniauth"
 gem "faker"
+gem "hashid-rails"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

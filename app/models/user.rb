@@ -4,17 +4,16 @@ class User < ApplicationRecord
   end
   
   has_one :user_profile
+  after_create :create_associations
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :omniauthable
         #  :confirmable, :lockable, 
 
-  after_create :create_associations
+  
 
-
-  private
-  def create_associations
-    self.create_user_profile!
+  def create_asociations
+    self.user_profile = UserProfile.new()
   end
 end

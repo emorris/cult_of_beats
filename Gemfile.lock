@@ -107,6 +107,10 @@ GEM
       sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashid-rails (1.4.1)
+      activerecord (>= 4.0)
+      hashids (~> 1.0)
+    hashids (1.0.6)
     hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -281,6 +285,7 @@ DEPENDENCIES
   factory_bot (~> 6.2)
   faker
   font-awesome-sass
+  hashid-rails
   image_processing (~> 1.2)
   jbuilder
   jsonapi-serializer (~> 2.2)
