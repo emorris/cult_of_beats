@@ -54,7 +54,7 @@ export default function Info({userProfile}) {
           onChange={onInputChange}
           placeholder="Bio" 
           name="bio"
-          className="textarea textarea-bordered textarea-sm w-full max-w-xs" >
+          className="textarea textarea-bordered textarea-sm w-full h-32" >
         </textarea>
       </div>
 

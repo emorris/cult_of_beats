@@ -10,8 +10,8 @@ export default function Index() {
   const userProfile = currentUserQuery.data.data.attributes.user_profile.data
   return (
       <div className="flex flex-col w-full gap-4 ">
-        <SiteLinks userProfile={userProfile} />
         <Info userProfile={userProfile} />
+        <SiteLinks userProfile={userProfile} />
       </div>
     )
 }

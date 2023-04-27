@@ -1,3 +1,3 @@
-export const handleChange = (setParamState) => ({target: { name, value }}) =>{
-  setParamState((prev) => ({ ...prev, [name]: value }))
+export const handleChange = (setState) => ({target: { name, value }}) =>{
+  setState((prev) => ({ ...prev, [name]: value }))
 }
