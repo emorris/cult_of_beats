@@ -3,7 +3,7 @@ import { addUserData } from "./currentUser"
 export const userApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '',
-    tagTypes: ['CurrentUser'],
+    tagTypes: ['CurrentUser', ['SharedContents']],
     prepareHeaders(headers) {
       let csrfToken = document.querySelector('[name=csrf-token]').content;
       headers.set('X-CSRF-TOKEN', csrfToken);
@@ -65,6 +65,30 @@ export const userApi = createApi({
       },
       invalidatesTags: ['CurrentUser']
     }),
+
+    getSharedContents: build.query({
+      query: () => `/api/current_user/shared_contents`,
+      providesTags: ['SharedContents']
+    }),
+    createSharedContent: build.mutation({
+      query: (body) => {
+        return {
+          url: `/api/current_user/shared_contents`,
+          method: 'POST',
+          body: {shared_content: body}
+        }
+      },
+      invalidatesTags: ['SharedContents']
+    }),
+    previewSharedContent: build.mutation({
+      query: (body) => {
+        return {
+          url: `/api/current_user/shared_contents/preview`,
+          method: 'POST',
+          body: {shared_content: body}
+        }
+      }
+    }),
   }),
 })
 
@@ -75,5 +99,9 @@ export const {
   useLogoutMutation, 
   useUpdatePasswordMutation,
   useUpdateUserInfoMutation,
-  useUpdateUserProfileMutation
+  useUpdateUserProfileMutation,
+  useGetSharedContentsQuery,
+  useCreateSharedContentMutation,
+  usePreviewSharedContentMutation
+  
 } = userApi

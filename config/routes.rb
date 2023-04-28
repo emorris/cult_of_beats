@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   
   namespace :api do
-    resources :users do 
-     resources :user_profiles, shallow: true
-    end
+    resources :users
     resource :current_user, :controller => :current_user do 
+      resources :user_profiles, shallow: true
       put "/password", to: "current_user#password"
+      resources :shared_contents, shallow: true do 
+        collection  do 
+          post :preview, shallow: true
+        end
+      end
     end
   end
 
@@ -21,8 +25,5 @@ Rails.application.routes.draw do
   
   get "*path", to: 'home#index', constraints: lambda { |request| !request.fullpath.include?('rails/active_storage') }
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  
-  # Defines the root path route ("/")
   root 'home#index'
 end

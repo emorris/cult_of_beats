@@ -10,7 +10,7 @@ import Logout from '../components/LoginSignUp/Logout'
 import Alerts from '../components/Alerts/Index'
 import UserAccount from '../components/UserSettings/AccountSettings.js'
 import UserProfile from '../components/UserSettings/Profile.js'
-
+import Content from '../components/UserSettings/Content/Index.js'
 
 const App = (props) => (
   <Provider store={configureStore}>
@@ -38,6 +38,11 @@ const App = (props) => (
               path="profile"
               element={<UserProfile />}
             />
+            <Route
+              path="content"
+              element={<Content />}
+            />
+            
           </Route>
         </Routes>
       </MainApp>
