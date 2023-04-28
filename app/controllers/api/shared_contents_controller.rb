@@ -14,11 +14,8 @@ class Api::SharedContentsController < Api::RootController
   end
 
   def preview
-   link = params['shared_content']['link']
-   image = YouTubeRails.extract_video_image(link)
-   em_code = YouTubeRails.youtube_embed_url(link, 420, 315)
-   data =  {image_url: image, embed_html: em_code}.to_json
-   render json: data
+    data = ContentPreviewService.new(params['shared_content']['link']).get_preview_json
+    render json: data
   end
 
   def update
