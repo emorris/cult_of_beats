@@ -13,8 +13,8 @@ class User < ApplicationRecord
         #  :confirmable, :lockable, 
 
   
-
-  def create_asociations
+  private
+  def create_associations
     self.user_profile = UserProfile.new()
   end
 end
