@@ -1,10 +1,11 @@
 import React from 'react'
 import { loadingSpinner } from '../../helpers/loading'
 
-export default function CardLayout({title, isLoading, onClick, children}) {
+export default function CardLayout({title, isLoading, onClick, children, btnName}) {
   if(!!isLoading){
     isLoading = false
   }
+  btnName = btnName ? btnName : "Update"
   return(
     <div className="grid flex-grow card ">
       <div className="card max-w-xl bg-neutral text-neutral-content">
@@ -15,7 +16,7 @@ export default function CardLayout({title, isLoading, onClick, children}) {
             <button
               onClick={() => onClick()} 
               className="btn btn-primary gap-2">
-                Update {loadingSpinner(isLoading)}
+                {btnName} {loadingSpinner(isLoading)}
             </button>
           </div>
         </div>

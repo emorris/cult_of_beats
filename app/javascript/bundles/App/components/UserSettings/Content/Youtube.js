@@ -15,24 +15,52 @@ const inputFields =[
   },
 ]
 
-function PreviewFile({previewFile}){
-  const previewImage = (imgUrl)=>{
-    return(
-      <div className="avatar">
-        <div className="w-24 rounded">
-          <img src={imgUrl} />
-        </div>
-      </div>
-    )
-  }
+function PreviewFile({previewFile, onCancel}){
+  const dispatch = useDispatch()
+  const [params, setParamState] = useState({...previewFile})
+  const onInputChange = handleChange(setParamState)
+  const [createSharedContent, { isLoading }]  = useCreateSharedContentMutation()
+  
 
+  const addSharedConent = async () => {
+    if( params['title']){
+      const res = await createSharedContent(params)
+      dispatch(addSuccess("Shared Content Created"))
+      setParamState({})
+      onCancel()
+    }
+  } 
   return(
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body">
-        <span>image preview</span>
-        {previewImage(previewFile.image_url)}
-        <span>Embed Verison</span>
-        <div class="card-actions justify-end"  dangerouslySetInnerHTML={{__html: previewFile.embed_html}}>
+    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      <div className="card-body">
+        <h2 className="card-title">Preview</h2>
+        <InputFields 
+            inputTypes={[{
+              name: "Title",
+              nameId: "title",
+              inputType: "basic"
+            }]} 
+            onChange={onInputChange}
+            defaultValues={params}   
+          />
+          <div className="flex place-items-end gap-4">
+            <div>
+              <div class="avatar">
+                <div class="w-24 rounded">
+                  <img src={previewFile.image_url} alt="Album"/>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <span>Embed Verison</span>
+              <div 
+                dangerouslySetInnerHTML={{__html: previewFile.embed_html}}
+              ></div>
+            </div>
+          </div>
+        <div className="card-actions justify-end">
+          <button onClick={onCancel} className="btn">Cancel</button>
+          <button onClick={addSharedConent}className="btn btn-primary">Create</button>
         </div>
       </div>
     </div>
@@ -41,59 +69,49 @@ function PreviewFile({previewFile}){
 
 export default function SharedContent({userProfile}) {
   const dispatch = useDispatch()
-  const [createSharedContent, { isPostLoading }]  = useCreateSharedContentMutation()
   const [previewSharedContent, { isLoading }]  = usePreviewSharedContentMutation()
   const [params, setParamState] = useState({})
-  const [previewFiles, setPreviewFiles] = useState([])
+  const [previewFile, setPreviewFile] = useState()
 
   const addPreviewContent = (content) => {
-    setPreviewFiles(prevState => (
-      [...prevState, content]
-    ))
+    setPreviewFile(content)
   }
 
-  const updateProfile = async () => {
-    if( params['youtube']){
-      const res = await createSharedContent({link: params['youtube']})
-      dispatch(addSuccess("Shared Content Created"))
-      setParamState({})
-    }
-  } 
+  const resetPreviewContent = () => {
+    setPreviewFile(null)
+  }
+
   const previewProfile = async () => {
     if( params['youtube']){
       const res = await previewSharedContent({link: params['youtube']})
-      dispatch(addSuccess("Shared Content Created"))
       addPreviewContent(res.data)
     }
   } 
 
-  const previewFilesView =()=>{
-    return(
-      previewFiles.map((previewFile)=>{
-        return <PreviewFile previewFile={previewFile} />
-      })
-    )
-  }
+  const returnView =()=>{
 
-  
-
-
-  const onInputChange = handleChange(setParamState)
-  return (
-    <>
-      <div>
-        <CardLayout title={"Add Shared Content"}  onClick={previewProfile}>
+    if(previewFile){
+      return <PreviewFile previewFile={previewFile} onCancel={resetPreviewContent} />
+    }else{
+      return (
+        <CardLayout btnName="Preview" title={"Add Shared Content"}  onClick={previewProfile}>
           <InputFields 
             inputTypes={inputFields} 
             onChange={onInputChange}
             defaultValues={params}   
           />
         </CardLayout>
-      </div>
-      <div>
-        {previewFilesView()}
-      </div>
-    </>
+      )
+
+    }
+  }
+
+
+  const onInputChange = handleChange(setParamState)
+  return (
+    <div>
+        {returnView()}
+    </div>
   )
 
 

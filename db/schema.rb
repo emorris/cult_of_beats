@@ -44,10 +44,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_223057) do
 
   create_table "shared_contents", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "link"
+    t.string "title"
+    t.string "source"
+    t.string "url"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["source"], name: "index_shared_contents_on_source"
     t.index ["user_id"], name: "index_shared_contents_on_user_id"
   end
 

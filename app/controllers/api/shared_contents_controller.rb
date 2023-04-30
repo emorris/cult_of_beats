@@ -1,14 +1,20 @@
 class Api::SharedContentsController < Api::RootController
   before_action :authenticate_user!
   def index
+    render json: SharedContentSerializer.new(current_user.shared_contents).to_json
   end
 
   def show
   end
 
+  def destroy
+    shared_content = current_user.shared_contents.find(params[:id])
+    shared_content.destroy()
+    render json: {}
+  end
+
   def create
-    
-    shared_content = SharedContent.new(share_content_params)
+    shared_content = SharedContent.new(shared_content_params)
     current_user.shared_contents << shared_content
     render json: {}
   end
@@ -25,9 +31,12 @@ class Api::SharedContentsController < Api::RootController
   end
 
   private
-  def share_content_params
-    params.require(:share_content).permit(
-        :link
+  def shared_content_params
+    params.require(:shared_content).permit(
+        :title,
+        :source,
+        :image_url,
+        :url
     )
   end
 end
