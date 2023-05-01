@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Api::CurrentUser", type: :request do
-  before(:each) do
-    @user = FactoryBot.create(:user)
-  end
-  after(:each) do
-    sign_out @user
-  end
   
   describe "GET /api/current_user" do
     
@@ -16,6 +10,7 @@ RSpec.describe "Api::CurrentUser", type: :request do
     end
     
     it "it can get current_user when logged in" do 
+      @user = FactoryBot.create(:user)
       sign_in @user
       get "/api/current_user"
       expect(response).to be_successful

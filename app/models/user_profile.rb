@@ -7,5 +7,4 @@ class UserProfile < ApplicationRecord
     :spotify, :tiktok
   ]
 
-  
 end
