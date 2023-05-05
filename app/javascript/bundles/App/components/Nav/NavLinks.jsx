@@ -10,21 +10,26 @@ export const mainLinks =[
 ]
 
 
-export const userLinks =[
-    {
-        name: "Profile",
-        url: "/profile"
-    },
+export const userLinks = (user) => {
+  
+  return [
     {
         name: "Settings",
-        url: "/settings/account"
+        url: "/settings/account",
+        react: true
     },
     {
         name: "Logout",
-        url: "/logout"
+        url: "/logout",
+        react: true
+    },
+    {
+      name:"Profile",
+      url: user.share_link_url,
+      react: false
     }
-]
-
+  ]
+}
 
 
 

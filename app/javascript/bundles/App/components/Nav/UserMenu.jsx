@@ -4,10 +4,15 @@ import { NavLink } from "react-router-dom";
 
 import {getUserIcon} from "../../helpers/user"
 export default function UserMenu({user}) {
-  const userLinkElements = userLinks.map((link) => {
-    return(
+  const userLinkElements = userLinks(user.attributes).map((link) => {
+    if(link.react){
+      return(
         <li key={link.url}><NavLink to={link.url}>{link.name}</NavLink></li>
-    )
+      )
+    }else{
+      return ( <li key={link.url}><a href={link.url} target="_blank">{link.name}</a></li>)
+    }
+   
   })
   return (
       <div className="dropdown dropdown-end">
