@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_223057) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_08_235232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_223057) do
     t.datetime "updated_at", null: false
     t.index ["source"], name: "index_shared_contents_on_source"
     t.index ["user_id"], name: "index_shared_contents_on_user_id"
+  end
+
+  create_table "user_profile_shared_contents", force: :cascade do |t|
+    t.bigint "user_profile_id"
+    t.bigint "shared_content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shared_content_id"], name: "index_user_profile_shared_contents_on_shared_content_id"
+    t.index ["user_profile_id"], name: "index_user_profile_shared_contents_on_user_profile_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
