@@ -49,7 +49,7 @@ const SharedContent = ({content}) => {
               </div>
             </div>
             <div className="flex-1">
-              <div dangerouslySetInnerHTML={{__html: content.attributes.sm_embed}} ></div>
+              <div dangerouslySetInnerHTML={{__html: content.attributes.small_embed}} ></div>
             </div>
         </div>
         {addToProfileCheckbox(content)}

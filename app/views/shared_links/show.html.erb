@@ -18,4 +18,14 @@
       </button>
     </a>
   <% end %>
+  <%  @user_profile.shared_contents.each do |shared_content| %>
+
+  <div class="card w-96 bg-neutral shadow-xl">
+    <figure> <%=  shared_content.html_embed.html_safe %></figure>
+    <div class="card-body items-center text-center">
+      <h2 class="card-title"><%= shared_content.title %></h2>
+    </div>
+  </div>
+   
+  <% end %>
 </div>

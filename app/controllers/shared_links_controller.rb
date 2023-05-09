@@ -5,7 +5,7 @@ class SharedLinksController < ApplicationController
   end
   
   def show
-    @user_profile = UserProfile.find(params[:id])
+    @user_profile = UserProfile.includes(:shared_contents).find(params[:id])
     render :show
   end
 end
