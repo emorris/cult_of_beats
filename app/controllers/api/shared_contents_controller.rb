@@ -26,17 +26,18 @@ class Api::SharedContentsController < Api::RootController
 
   def update
     shared_content = current_user.shared_contents.find(params[:id])
-    shared_content.update(share_content_params)
+    shared_content.user_profile = UserProfile.find_by(id: params[:shared_content][:user_profile])
+    # shared_content.update(shared_content_params)
     render json: {}
   end
 
   private
   def shared_content_params
     params.require(:shared_content).permit(
-        :title,
-        :source,
-        :image_url,
-        :url
+      :title,
+      :source,
+      :image_url,
+      :url
     )
   end
 end

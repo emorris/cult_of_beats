@@ -81,6 +81,16 @@ export const userApi = createApi({
       },
       invalidatesTags: ['SharedContents']
     }),
+    updateSharedContent: build.mutation({
+      query: ({body, id}) => {
+        return {
+          url: `/api/shared_contents/${id}`,
+          method: 'PUT',
+          body: {shared_content: body}
+        }
+      },
+      invalidatesTags: ['SharedContents']
+    }),
     deleteSharedContent: build.mutation({
       query: (id) => {
         return {
@@ -113,6 +123,7 @@ export const {
   useGetSharedContentsQuery,
   useCreateSharedContentMutation,
   usePreviewSharedContentMutation,
-  useDeleteSharedContentMutation
+  useDeleteSharedContentMutation,
+  useUpdateSharedContentMutation
   
 } = userApi

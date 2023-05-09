@@ -17,7 +17,8 @@ class Api::UserProfilesController < Api::RootController
   private
   def user_profile_params
     params.require(:user_profile).permit(
-        :name, :bio,
+        :name, 
+        :bio,
         site_links:[UserProfile::SITE_LINK_TYPES]
     )
   end
